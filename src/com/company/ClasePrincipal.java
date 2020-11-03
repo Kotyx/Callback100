@@ -2,10 +2,12 @@ package com.company;
 
 import java.util.Random;
 
-public class ClasePrincipal extends Thread {
+public class ClasePrincipal {
     @Override
-    public void run() {
-        Thread1 t1=new Thread1(this);
+    Thread1 [] t1=new Thread1[5](this);
+    public ClasePrincipal {
+
+        t1.start();
     }
 
     public int numeroAleatorio(){
