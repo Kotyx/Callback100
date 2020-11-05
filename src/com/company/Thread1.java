@@ -5,7 +5,6 @@ import java.util.Random;
 public class Thread1 extends Thread{
     Callback callback;
     public Thread1(Callback callback){this.callback=callback;}
-    int num=0;
     @Override
     public void run() {
         try {
@@ -14,6 +13,7 @@ public class Thread1 extends Thread{
 
                 sleep(dormir);
 
+                callback.contador();
                 callback.hiloterminado("El Hilo "+getName()+" ha dormido por "+dormir+"milisegundos");
 
                 callback.añadirlista(getName()+" ha dormido "+dormir);
