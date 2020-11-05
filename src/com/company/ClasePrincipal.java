@@ -1,15 +1,41 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class ClasePrincipal extends Thread {
-    @Override
-    public void run() {
-        Thread1 t1=new Thread1(this);
+public class ClasePrincipal implements Callback{
+
+    Thread1 [] t1=new Thread1[5];
+    ArrayList <String> lhilos=new ArrayList<String>();
+    public ClasePrincipal() {
+        for(int i=1;i<5;i++){
+            System.out.println("Iteracion "+i);
+            for(int j=0;j<5;j++){
+                Thread1 h = new Thread1(this);
+                h.setName("hilo "+j);
+                h.start();
+                t1[j]=h;
+
+            }
+            for(Thread1 h1:t1){
+                try {
+                    h1.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
     }
 
-    public int numeroAleatorio(){
-        Random r = new Random();
-        return (r.nextInt(7000)+1000);
+    @Override
+    public void hiloterminado(String respuesta) {
+        System.out.println(respuesta);
+    }
+
+    @Override
+    public void añadirlista(String hilo) {
+        lhilos.add(hilo);
     }
 }

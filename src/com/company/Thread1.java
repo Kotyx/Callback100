@@ -1,21 +1,21 @@
 package com.company;
 
+import java.util.Random;
+
 public class Thread1 extends Thread{
-    ClasePrincipal c;
-    public Thread1(ClasePrincipal clasePrincipal){c=clasePrincipal;}
+    Callback callback;
+    public Thread1(Callback callback){this.callback=callback;}
     int num=0;
     @Override
     public void run() {
         try {
-            for (int i=0;i<5;i++){
-                num=c.numeroAleatorio();
-                System.out.println("Iteracion 1");
+            Random r = new Random();
+            int dormir=r.nextInt(7000)+1000;
 
-                sleep(num);
+                sleep(dormir);
 
-                System.out.print("El Hilo "+i+" ha dormido por "+num+"milisegundos");
+                callback.hiloterminado("El Hilo "+getName()+" ha dormido por "+dormir+"milisegundos");
 
-            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
