@@ -16,6 +16,7 @@ public class Thread1 extends Thread{
 
                 callback.hiloterminado("El Hilo "+getName()+" ha dormido por "+dormir+"milisegundos");
 
+                callback.añadirlista(getName()+" ha dormido "+dormir);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

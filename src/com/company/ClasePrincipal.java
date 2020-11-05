@@ -2,7 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+interface Callback{
+    public void añadirlista(String hilo);
+    public void hiloterminado(String respuesta);
+}
 public class ClasePrincipal implements Callback{
 
     Thread1 [] t1=new Thread1[5];
@@ -24,6 +27,8 @@ public class ClasePrincipal implements Callback{
                     e.printStackTrace();
                 }
             }
+            System.out.println("El hilo que ha terminado primero es: "+ lhilos.get(0));
+            lhilos.clear();
         }
 
 
